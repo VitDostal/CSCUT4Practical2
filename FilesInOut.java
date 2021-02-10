@@ -26,7 +26,7 @@ public class FilesInOut {
         // That is, read a line, write a line, loop.
 
         // Finally, add code to read the filenames as arguments from the command line.
-
+    	System.out.println("You need to add your own code to do anything");
         System.out.println("You need to add your own code to do anything");
 
     } // main
