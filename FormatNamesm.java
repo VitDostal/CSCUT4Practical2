@@ -11,13 +11,11 @@ import java.lang.Number;
  * CSCU9T4 Java strings and files exercise.
  *
  */
-public class FilesInOut {
+public class FormatNamesm {
 
     public static void main(String[] args) throws FileNotFoundException{
     	int argsCounter = 0;
     	boolean upperCaseChoice = false;
-    	
-    	
     	/*
     	 * For Scanner IDE input instead of console
     	Scanner console = new Scanner(System.in);
@@ -43,8 +41,6 @@ public class FilesInOut {
     	String outputFileName = args[argsCounter];
     	argsCounter++;
     	
-        
-    	
     	File inputFile = new File(inputFileName);
     	Scanner in = new Scanner(inputFile);
     	PrintWriter out = new PrintWriter(outputFileName);
@@ -61,7 +57,7 @@ public class FilesInOut {
     		
     		
     		if(upperCaseChoice) {
-    			personName = personName.toUpperCase();
+    			personName = UpperCasing(personName);
     		}
     		else {
     			personName = capitalizeWord(personName);
@@ -73,21 +69,46 @@ public class FilesInOut {
     		out.printf(personName + " " + dateOfBirth + "\n");
     		System.out.print(personName + " " + dateOfBirth + "\n");
     	}
-    	
+       
         in.close();
         out.close();
     } // main
     
     public static String capitalizeWord(String str){  
-        String words[]=str.split("\\s");  
-        String capitalizeWord="";  
-        for(String w:words){  
-            String first=w.substring(0,1);  
-            String afterfirst=w.substring(1);  
-            capitalizeWord+=first.toUpperCase()+afterfirst+" ";  
-        }  
+        String words[]=str.split("\\s"); 
+        int numberOfWords = words.length; // 2 or 3        
+        String capitalizeWord="";
+        for(int i = 0; i < numberOfWords; i++) {
+        	String first=words[i].substring(0,1);
+        	String afterfirst=words[i].substring(1);
+        	if(i== 1 && numberOfWords == 3) {
+        		capitalizeWord+=first.toUpperCase()+". "+afterfirst+" "; 
+        	}
+        	else {
+        		capitalizeWord+=first.toUpperCase()+afterfirst+" "; 
+        	}
+            
+        }   
+          
         return capitalizeWord.trim(); 
-    }   
+    }
+    
+    public static String UpperCasing(String str) {
+    	String words[]=str.split("\\s"); 
+        int numberOfWords = words.length; // 2 or 3        
+        String upperCaseWord="";
+        for(int i = 0; i < numberOfWords; i++) {
+        	String upperCase=words[i].toUpperCase();        	
+        	if(i== 1 && numberOfWords == 3) {
+        		upperCaseWord+= upperCase + ". "; 
+        	}
+        	else {
+        		upperCaseWord +=upperCase + " ";
+        	}
+        }   
+          
+        return upperCaseWord.trim(); 
+    }
     
 
-} // FilesInOut
+} // FormatNamesm
